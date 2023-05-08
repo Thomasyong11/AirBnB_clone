@@ -312,7 +312,7 @@ $ ./console.py
 (hbnb) User.destroy("246c227a-d5c1-403d-9bc7-6a47bb9f0f68")
 (hbnb) User.count()
 1
-(hbnb) User.destroy("Holberton")
+(hbnb) User.destroy("Alx")
 ** no instance found **
 (hbnb) 
 
@@ -345,4 +345,7 @@ Errors management must be the same as previously.
 Contributors:
 1. Manuel Dinis Júnior
 2. Adjamkwalim Akum-Yong
+
 ..........................................................................................................................
+
+## VIELEN DANK
