@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """ Module of Unittests for base model in models folder"""
 import unittest
 from models.base_model import BaseModel

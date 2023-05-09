@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 from models import storage
 from models.base_model import BaseModel
 
@@ -10,7 +11,7 @@ for obj_id in all_objs.keys():
 
 print("-- Create a new object --")
 my_model = BaseModel()
-my_model.name = "Holberton"
+my_model.name = "ALX Africa"
 my_model.my_number = 89
 my_model.save()
 print(my_model)
