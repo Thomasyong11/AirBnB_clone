@@ -39,8 +39,8 @@ class BaseModelTests(unittest.TestCase):
         self.my_model.save()
         sec_dict = self.my_model.to_dict()
 
-         self.assertEqual(first_dict['created_at'], sec_dict['created_at'])
-         self.assertNotEqual(first_dict['updated_at'], sec_dict['updated_at'])
+        self.assertEqual(first_dict['created_at'], sec_dict['created_at'])
+        self.assertNotEqual(first_dict['updated_at'], sec_dict['updated_at'])
 
 if __name__ == '__main__':
     unittest.main()
