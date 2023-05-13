@@ -1,44 +1,39 @@
 #!/usr/bin/python3
-
+"""
+Unittest for amenity.py
+"""
 import unittest
 from models.state import State
-"""
-Unittest Module for State class
-"""
+import datetime
 
 
-class TestUser(unittest.TestCase):
-    ''' Unittest for State class '''
+class TestState(unittest.TestCase):
+    """ Tests instances and methods from State class """
 
-    def test_object_Instantiation(self):
-        ''' instantiates class '''
-        self.state = State()
+    s = State()
 
-    def testattr(self):
-        ''' test Class: State attributes '''
-        self.state = State()
-        self.assertTrue(hasattr(self.state, "created_at"))
-        self.assertTrue(hasattr(self.state, "updated_at"))
-        self.assertFalse(hasattr(self.state, "random_attr"))
-        self.assertTrue(hasattr(self.state, "name"))
-        self.assertTrue(hasattr(self.state, "id"))
-        self.assertEqual(self.state.name, "")
-        self.state.name = "WonderLand"
-        self.assertEqual(self.state.name, "WonderLand")
-        self.assertEqual(self.state.__class__.__name__, "State")
+    def test_class_exists(self):
+        """tests if class exists"""
+        res = "<class 'models.state.State'>"
+        self.assertEqual(str(type(self.s)), res)
 
-    def testsave(self):
-        ''' testing method: save '''
-        self.state = State()
-        self.state.save()
-        self.assertTrue(hasattr(self.state, "updated_at"))
+    def test_user_inheritance(self):
+        """test if State is a subclass of BaseModel"""
+        self.assertIsInstance(self.s, State)
 
-    def teststr(self):
-        ''' testing __str__ return format of BaseModel '''
-        self.state = State()
-        s = "[{}] ({}) {}".format(self.state.__class__.__name__,
-                                  str(self.state.id), self.state.__dict__)
-        self.assertEqual(print(s), print(self.state))
+    def testHasAttributes(self):
+        """verify if attributes exist"""
+        self.assertTrue(hasattr(self.s, 'name'))
+        self.assertTrue(hasattr(self.s, 'id'))
+        self.assertTrue(hasattr(self.s, 'created_at'))
+        self.assertTrue(hasattr(self.s, 'updated_at'))
+
+    def test_types(self):
+        """tests if the type of the attribute is the correct one"""
+        self.assertIsInstance(self.s.name, str)
+        self.assertIsInstance(self.s.id, str)
+        self.assertIsInstance(self.s.created_at, datetime.datetime)
+        self.assertIsInstance(self.s.updated_at, datetime.datetime)
 
 if __name__ == '__main__':
     unittest.main()

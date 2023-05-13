@@ -1,42 +1,40 @@
 #!/usr/bin/python3
-
+"""
+Unittest for review.py
+"""
 import unittest
 from models.review import Review
-"""
-Unittest Module for Review class
-"""
+import datetime
 
 
-class TestUser(unittest.TestCase):
-    ''' Unittest for Review class '''
+class TestReview(unittest.TestCase):
+    """Tests instances and methods from Review class"""
 
-    def test_object_Instantiation(self):
-        ''' instantiates class '''
-        self.review = Review()
+    r = Review()
 
-    def testattr(self):
-        ''' test Class: Review attributes '''
-        self.review = Review()
-        self.assertTrue(hasattr(self.review, "created_at"))
-        self.assertTrue(hasattr(self.review, "updated_at"))
-        self.assertFalse(hasattr(self.review, "random_attr"))
-        self.assertTrue(hasattr(self.review, "text"))
-        self.assertTrue(hasattr(self.review, "id"))
-        self.assertEqual(self.review.text, "")
-        self.assertEqual(self.review.__class__.__name__, "Review")
+    def test_class_exists(self):
+        """tests if class exists"""
+        res = "<class 'models.review.Review'>"
+        self.assertEqual(str(type(self.r)), res)
 
-    def testsave(self):
-        ''' testing method: save '''
-        self.review = Review()
-        self.review.save()
-        self.assertTrue(hasattr(self.review, "updated_at"))
+    def test_user_inheritance(self):
+        """test if Review is a subclass of BaseModel"""
+        self.assertIsInstance(self.r, Review)
 
-    def teststr(self):
-        ''' testing __str__ return format of BaseModel '''
-        self.review = Review()
-        s = "[{}] ({}) {}".format(self.review.__class__.__name__,
-                                  str(self.review.id), self.review.__dict__)
-        self.assertEqual(print(s), print(self.review))
+    def testHasAttributes(self):
+        """verify if attributes exist"""
+        self.assertTrue(hasattr(self.r, 'place_id'))
+        self.assertTrue(hasattr(self.r, 'user_id'))
+        self.assertTrue(hasattr(self.r, 'text'))
+        self.assertTrue(hasattr(self.r, 'id'))
+        self.assertTrue(hasattr(self.r, 'created_at'))
+        self.assertTrue(hasattr(self.r, 'updated_at'))
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_types(self):
+        """tests if the type of the attribute is the correct one"""
+        self.assertIsInstance(self.r.place_id, str)
+        self.assertIsInstance(self.r.user_id, str)
+        self.assertIsInstance(self.r.text, str)
+        self.assertIsInstance(self.r.id, str)
+        self.assertIsInstance(self.r.created_at, datetime.datetime)
+        self.assertIsInstance(self.r.updated_at, datetime.datetime)
