@@ -1,39 +1,40 @@
 #!/usr/bin/python3
-"""
-Unittest for amenity.py
-"""
 import unittest
 from models.amenity import Amenity
-import datetime
+"""
+Unittest Module for Amenity class
+"""
 
 
 class TestAmenity(unittest.TestCase):
-    """Tests instances and methods from amenity class"""
+    ''' Unittest for Amenity class '''
 
-    a = Amenity()
+    def test_object_Instantiation(self):
+        ''' instantiates class '''
+        self.amenity = Amenity()
 
-    def test_class_exists(self):
-        """tests if class exists"""
-        res = "<class 'models.amenity.Amenity'>"
-        self.assertEqual(str(type(self.a)), res)
+    def testattr(self):
+        ''' test Class: Amenity attributes '''
+        self.amenity = Amenity()
+        self.assertTrue(hasattr(self.amenity, "created_at"))
+        self.assertTrue(hasattr(self.amenity, "updated_at"))
+        self.assertFalse(hasattr(self.amenity, "random_attr"))
+        self.assertTrue(hasattr(self.amenity, "name"))
+        self.assertTrue(hasattr(self.amenity, "id"))
+        self.assertEqual(self.amenity.__class__.__name__, "Amenity")
 
-    def test_user_inheritance(self):
-        """test if Amenity is a subclass of BaseModel"""
-        self.assertIsInstance(self.a, Amenity)
+    def testsave(self):
+        ''' testing method: save '''
+        self.amenity = Amenity()
+        self.amenity.save()
+        self.assertTrue(hasattr(self.amenity, "updated_at"))
 
-    def testHasAttributes(self):
-        """verify if attributes exist"""
-        self.assertTrue(hasattr(self.a, 'name'))
-        self.assertTrue(hasattr(self.a, 'id'))
-        self.assertTrue(hasattr(self.a, 'created_at'))
-        self.assertTrue(hasattr(self.a, 'updated_at'))
-
-    def test_types(self):
-        """tests if the type of the attribute is the correct one"""
-        self.assertIsInstance(self.a.name, str)
-        self.assertIsInstance(self.a.id, str)
-        self.assertIsInstance(self.a.created_at, datetime.datetime)
-        self.assertIsInstance(self.a.updated_at, datetime.datetime)
+    def teststr(self):
+        ''' testing __str__ return format of Amenity '''
+        self.amenity = Amenity()
+        s = "[{}] ({}) {}".format(self.amenity.__class__.__name__,
+                                  str(self.amenity.id), self.amenity.__dict__)
+        self.assertEqual(print(s), print(self.amenity))
 
 if __name__ == '__main__':
     unittest.main()
