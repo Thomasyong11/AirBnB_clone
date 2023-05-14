@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """Defines unittests for models/city.py.
 
 Unittest classes:
@@ -8,12 +9,15 @@ Unittest classes:
 """
 import os
 import models
+=======
+>>>>>>> a9bd40df937bcbfbd8948a74ed8cfce86090c8da
 import unittest
 from datetime import datetime
 from time import sleep
 from models.city import City
 
 
+<<<<<<< HEAD
 class TestCity_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the City class."""
 
@@ -192,4 +196,44 @@ class TestCity_to_dict(unittest.TestCase):
 
 
 if __name__ == "__main__":
+=======
+class TestUser(unittest.TestCase):
+    ''' Unittest for City class '''
+
+    def test_object_Instantiation(self):
+        ''' instantiates class '''
+        self.city = City()
+
+    def testattr(self):
+        ''' test Class: City attributes '''
+        self.city = City()
+        self.assertTrue(hasattr(self.city, "created_at"))
+        self.assertTrue(hasattr(self.city, "updated_at"))
+        self.assertFalse(hasattr(self.city, "random_attr"))
+        self.assertTrue(hasattr(self.city, "name"))
+        self.assertTrue(hasattr(self.city, "id"))
+        self.assertEqual(self.city.name, "")
+        self.assertEqual(self.city.state_id, "")
+        self.city.name = "WonderLand"
+        self.city.state_id = "Won67L0nd"
+        self.assertEqual(self.city.name, "WonderLand")
+        self.assertEqual(self.city.state_id, "Won67L0nd")
+        self.assertEqual(self.city.__class__.__name__, "City")
+
+    def testsave(self):
+        ''' testing method: save '''
+        self.city = City()
+        self.city.save()
+        self.assertTrue(hasattr(self.city, "updated_at"))
+
+    def teststr(self):
+        ''' testing __str__ return format of BaseModel '''
+        self.city = City()
+        s = "[{}] ({}) {}".format(self.city.__class__.__name__,
+                                  str(self.city.id), self.city.__dict__)
+        self.assertEqual(print(s), print(self.city))
+
+
+if __name__ == '__main__':
+>>>>>>> a9bd40df937bcbfbd8948a74ed8cfce86090c8da
     unittest.main()

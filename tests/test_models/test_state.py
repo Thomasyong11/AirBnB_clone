@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """Defines unittests for models/state.py.
 
 Unittest classes:
@@ -8,6 +9,8 @@ Unittest classes:
 """
 import os
 import models
+=======
+>>>>>>> a9bd40df937bcbfbd8948a74ed8cfce86090c8da
 import unittest
 from datetime import datetime
 from time import sleep
